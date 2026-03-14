@@ -1,0 +1,46 @@
+<div class="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="mb-8 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Smart Task Board</h1>
+                </div>
+                <button mat-flat-button color="primary" (click)="openAddDialog()"
+                    class="font-bold h-10 px-6 rounded-lg transition-all">
+                    <mat-icon class="mr-2">add</mat-icon>
+                    Add Task
+                </button>
+            </div>
+
+            <!-- Search Bar -->
+            <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                <mat-icon matPrefix class="mr-2 text-slate-400">search</mat-icon>
+                <input matInput [value]="taskService.searchQuery()" (input)="updateSearch($event)"
+                    placeholder="Search tasks by title..." />
+            </mat-form-field>
+        </header>
+
+        <!-- Stats -->
+        <app-task-stats [stats]="taskService.stats()"></app-task-stats>
+
+        <!-- Main Content -->
+        <main class="space-y-6">
+            <!-- Task List / Kanban View -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- To-Do Column -->
+                <app-task-list [tasks]="todoTasks()" listId="todo-list" title="To-Do"
+                    [connectedTo]="['inprogress-list', 'completed-list']"></app-task-list>
+
+                <!-- In Progress Column -->
+                <app-task-list [tasks]="inprogressTasks()" listId="inprogress-list" title="In Progress"
+                    [connectedTo]="['todo-list', 'completed-list']"></app-task-list>
+
+                <!-- Completed Column -->
+                <app-task-list [tasks]="completedTasks()" listId="completed-list" title="Completed"
+                    [connectedTo]="['todo-list', 'inprogress-list']"></app-task-list>
+            </div>
+
+        </main>
+    </div>
+</div>

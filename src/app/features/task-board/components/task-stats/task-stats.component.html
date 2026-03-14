@@ -1,0 +1,47 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <!-- Total Tasks -->
+    <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl">
+        <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-indigo-600">Total Tasks</p>
+            <span class="p-1 px-2.5 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold">
+                {{ stats().total }}
+            </span>
+        </div>
+        <p class="mt-2 text-2xl font-bold text-slate-900">{{ stats().total }}</p>
+    </div>
+
+    <!-- To-Do -->
+    <div class="bg-amber-50 border border-amber-100 p-4 rounded-xl">
+        <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-amber-600">To-Do</p>
+            <span class="p-1 px-2.5 bg-amber-100 text-amber-700 rounded-full text-xs font-bold">
+                {{ stats().todo }}
+            </span>
+        </div>
+        <p class="mt-2 text-2xl font-bold text-slate-900">{{ stats().todo }}</p>
+    </div>
+
+    <!-- In Progress -->
+    <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl">
+        <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-blue-600">In Progress</p>
+            <span class="p-1 px-2.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
+                {{ stats().inprogress }}
+            </span>
+        </div>
+        <p class="mt-2 text-2xl font-bold text-slate-900">{{ stats().inprogress }}</p>
+    </div>
+
+    <!-- Completed -->
+    <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl">
+        <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-emerald-600">Completed</p>
+            <span class="p-1 px-2.5 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">
+                {{ stats().total > 0 ? ((stats().completed / stats().total) * 100 | number: '1.0-0') : 0 }}%
+            </span>
+        </div>
+        <p class="mt-2 text-2xl font-bold text-slate-900">
+            {{ stats().completed }}
+        </p>
+    </div>
+</div>
