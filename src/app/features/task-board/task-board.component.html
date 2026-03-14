@@ -14,7 +14,7 @@
             </div>
 
             <!-- Search Bar -->
-            <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+            <mat-form-field appearance="outline" class="w-75" subscriptSizing="dynamic">
                 <mat-icon matPrefix class="mr-2 text-slate-400">search</mat-icon>
                 <input matInput [value]="taskService.searchQuery()" (input)="updateSearch($event)"
                     placeholder="Search tasks by title..." />
